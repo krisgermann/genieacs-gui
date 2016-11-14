@@ -69,7 +69,7 @@ class DevicesController < ApplicationController
       if params.has_key?('query')
         @query = ActiveSupport::JSON.decode(URI.unescape(params['query']))
       end
-      if request.format == Mime::CSV
+      if request.format == Mime[:csv]
         @devices = find_devices(@query)
       else
         @devices = find_devices(@query, skip, Rails.configuration.page_size, sort)
